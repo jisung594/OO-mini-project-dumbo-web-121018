@@ -33,6 +33,18 @@ class Recipe
       end
   end
 
+  def allergens
+    allergens = []
+    Allergen.all.each do |allergen|
+      self.ingredients.each do |ingredient|
+        if ingredient == allergen.ingredient
+          allergens << ingredient
+        end
+      end
+    end
+    allergens
+  end
+
   def self.all
     @@all
   end
