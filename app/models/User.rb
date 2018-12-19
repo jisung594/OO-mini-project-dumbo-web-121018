@@ -32,4 +32,26 @@ class User
     ingredients
   end
 
+  def all_recipes
+    RecipeCard.all.select do |card|
+      card.user == self
+    end
+  end
+
+  def recipes
+    recipes = []
+    RecipeCard.all.each do |card|
+      if card.user == self
+        recipes << card.recipe
+      end
+    end
+    recipes
+  end
+
+  def top_three_recipes
+    all_recipes.each do |recipe|
+      binding.pry
+    end
+  end
+
 end
