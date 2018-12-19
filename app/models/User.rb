@@ -39,19 +39,21 @@ class User
   end
 
   def recipes
-    recipes = []
-    RecipeCard.all.each do |card|
-      if card.user == self
-        recipes << card.recipe
-      end
+    all_recipes.map do |card|
+      card.recipe
     end
-    recipes
   end
 
   def top_three_recipes
-    all_recipes.each do |recipe|
-      binding.pry
-    end
+    all_recipes.sort_by do |x,y|
+      x.rating
+    end.slice(-3,3)
+  end
+
+  def most_recent_recipe
+    all_recipes.sort_by do |x|
+      x.date
+    end[-1]
   end
 
 end
