@@ -45,6 +45,18 @@ class Recipe
     allergens
   end
 
+  def self.most_popular
+    new_hash = {}
+    RecipeCard.all.each do |card|
+      if new_hash[card.recipe]
+        new_hash[card.recipe] += 1
+      else
+        new_hash[card.recipe] = 1
+      end
+    end
+    new_hash.sort_by {|k,v| v}.last
+  end
+
   def self.all
     @@all
   end
