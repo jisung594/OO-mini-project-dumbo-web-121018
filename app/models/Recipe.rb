@@ -7,6 +7,32 @@ class Recipe
     @@all << self
   end
 
+  def cards
+    RecipeCard.all.select do |recipe_card|
+      recipe_card.recipe == self
+    end
+  end
+
+  def users
+    cards.map do |card|
+      card.user
+    end
+  end
+
+  def ingredients
+    RecipeIngredient.all.select do |ingredient|
+      ingredient.recipe == self
+    end.map do |x|
+      x.ingredient
+    end
+  end
+
+  def add_ingredients(ingredients)
+      ingredients.each do |ingredient|
+        recipe_ingredient = RecipeIngredient.new(ingredient,self)
+      end
+  end
+
   def self.all
     @@all
   end

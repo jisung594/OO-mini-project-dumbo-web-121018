@@ -18,4 +18,11 @@ allergen1 = Allergen.new(banana)
 allergen2 = Allergen.new(peanut)
 allergen3 = Allergen.new(bread)
 
+user1.add_recipe_card(recipe2, "04/23", 3.8)
+user2.add_recipe_card(recipe3, "01/30", 2.9)
+user3.add_recipe_card(recipe1, "04/10", 4.0)
+
+arr = [banana,peanut,noodle,oats,bread]
+recipe1.add_ingredients(arr)
+
 binding.pry
